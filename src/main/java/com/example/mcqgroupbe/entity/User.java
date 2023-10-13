@@ -1,8 +1,11 @@
 package com.example.mcqgroupbe.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -25,12 +28,7 @@ public class User implements UserDetails {
 	 private String role;
 	 @Column(name = "account_non_locked")
 	 private boolean accountNonLocked; 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
@@ -42,7 +40,10 @@ public class User implements UserDetails {
 		// TODO Auto-generated method stub
 		return username;
 	}
-
+	
+	public String getRole() {
+		return role;
+	}
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
@@ -70,5 +71,18 @@ public class User implements UserDetails {
 	public void setPassword(String password) {
 		this.password=password;		
 	}
+	
+	public void setRole(String role) {
+		this.role=role;		
+	}
+	
+	@Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+
+        list.add(new SimpleGrantedAuthority(role));
+
+        return list;
+    }
 
 }

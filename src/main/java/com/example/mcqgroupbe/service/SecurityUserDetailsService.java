@@ -22,6 +22,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
 		// TODO Auto-generated method stub
 		User user = userRepository.findUserByUsername(username) 
 		         .orElseThrow(() -> new UsernameNotFoundException("User not present")); 
+		System.out.println(user.getRole());
 		         return user; 
 	}
 
