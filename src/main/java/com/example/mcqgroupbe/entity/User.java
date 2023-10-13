@@ -22,6 +22,7 @@ public class User implements UserDetails {
 	@Id
 	 private String username; 
 	 private String password; 
+	 private String role;
 	 @Column(name = "account_non_locked")
 	 private boolean accountNonLocked; 
 	@Override
@@ -45,7 +46,7 @@ public class User implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -63,7 +64,11 @@ public class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+
+	public void setPassword(String password) {
+		this.password=password;		
 	}
 
 }
