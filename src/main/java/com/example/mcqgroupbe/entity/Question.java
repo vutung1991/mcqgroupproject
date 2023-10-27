@@ -32,6 +32,8 @@ public class Question {
     @Column(name = "set_id")
     private int setId;
 
+    @Column(name = "topic_id")
+    private int topicId;
     // Constructors, getters, and setters as needed
 
     public Question() {
@@ -113,4 +115,19 @@ public class Question {
     public void setSetId(int setId) {
         this.setId = setId;
     }
+    public int getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [qnNo=" + qnNo + ", question=" + question + ", opt1=" + opt1 + ", opt2=" + opt2 + ", opt3="
+				+ opt3 + ", opt4=" + opt4 + ", correctAnswer=" + correctAnswer + ", setId=" + setId + ", topicId="
+				+ topicId + "]";
+	}
+    
 }
