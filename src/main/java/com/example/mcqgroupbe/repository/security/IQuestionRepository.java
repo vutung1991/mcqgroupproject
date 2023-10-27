@@ -1,8 +1,10 @@
 package com.example.mcqgroupbe.repository.security;
 
-import com.example.mcqgroupbe.entity.Question2;
+import java.util.List;
+
+import com.example.mcqgroupbe.entity.Question;
 
 public interface IQuestionRepository {
 	
-	Question2 createQuestion(Question2 question);
+	List<Question> getQuestionbyTopicAndSetId(int topicId,int setId);
 }
