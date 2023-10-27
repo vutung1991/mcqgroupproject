@@ -18,5 +18,6 @@ public class Question {
     private String opt_d;
     private int correct;
     private int setId;
+    private int topicId;
 
 }
