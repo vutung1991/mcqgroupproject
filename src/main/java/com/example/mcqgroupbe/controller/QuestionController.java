@@ -6,6 +6,7 @@ import com.example.mcqgroupbe.repository.QuestionRepository;
 import com.example.mcqgroupbe.service.IQuestionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +33,8 @@ public class QuestionController {
     public Question getQuestionById(@PathVariable int id) {
         return questionRepository.findById(id).orElse(null);
     }
-
+    
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public Question createQuestion(@RequestBody Question question) {
         return questionRepository.save(question);

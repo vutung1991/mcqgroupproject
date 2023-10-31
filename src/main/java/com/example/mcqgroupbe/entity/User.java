@@ -8,9 +8,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,9 +27,17 @@ import lombok.NoArgsConstructor;
 public class User implements UserDetails {
 
 	@Id
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+	private long userId;
 	 private String username; 
 	 private String password; 
 	 private String role;
+	 @Transient
+	 private String email;
+	 @Transient
+	 private String firstName;
+	 @Transient
+	 private String lastName;
 	 @Column(name = "account_non_locked")
 	 private boolean accountNonLocked; 
 	
@@ -84,5 +96,31 @@ public class User implements UserDetails {
 
         return list;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	
 
 }
