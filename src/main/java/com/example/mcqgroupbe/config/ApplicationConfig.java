@@ -49,11 +49,14 @@ public class ApplicationConfig  {
 		      .authorizeRequests().requestMatchers("/register**","/login")
 		      .permitAll() .anyRequest().authenticated() 
 		      .and() 
+		      .cors()
+		      .and()	
 		      .formLogin() 
 		      .permitAll() 
 		      .and() 
 		      .logout() .invalidateHttpSession(true) 
-		      .clearAuthentication(true) .permitAll(); 
+		      .clearAuthentication(true) .permitAll()
+		      .and().httpBasic(); 
 	        return http.build();
 	    }
 }

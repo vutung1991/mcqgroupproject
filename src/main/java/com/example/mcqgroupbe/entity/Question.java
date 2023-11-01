@@ -31,7 +31,6 @@ public class Question {
 
     @Column(name = "set_id")
     private int setId;
-   
 
     @Column(name = "topic_id")
     private int topicId;
