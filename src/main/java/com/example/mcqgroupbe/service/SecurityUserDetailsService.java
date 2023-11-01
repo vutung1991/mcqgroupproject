@@ -18,13 +18,21 @@ public class SecurityUserDetailsService implements UserDetailsService {
 	private UserDetailsRepository userDetailsRepository;
 	   
 	   
-	   public void createUser(User user) { 
+	   public UserContactDetails createUser(User user) { 
 		   UserContactDetails userContactDetails = new UserContactDetails();
 		   userContactDetails.setUser(userRepository.save((User) user));
 		   userContactDetails.setEmail(user.getEmail());
 		   userContactDetails.setFirstName(user.getFirstName());
 		   userContactDetails.setLastName(user.getLastName());
-		   userDetailsRepository.save(userContactDetails);
+		   return userDetailsRepository.save(userContactDetails);
+	   } 
+	   public UserContactDetails editUser(User user) { 
+		   UserContactDetails userContactDetails = userDetailsRepository.findById(user.getUserId()).get();
+		   userContactDetails.setUser(userRepository.save((User) user));
+		   userContactDetails.setEmail(user.getEmail());
+		   userContactDetails.setFirstName(user.getFirstName());
+		   userContactDetails.setLastName(user.getLastName());
+		   return userDetailsRepository.save(userContactDetails);
 	   } 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
