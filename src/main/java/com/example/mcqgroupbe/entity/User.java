@@ -120,6 +120,23 @@ public class User implements UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+	
 	
 	
 

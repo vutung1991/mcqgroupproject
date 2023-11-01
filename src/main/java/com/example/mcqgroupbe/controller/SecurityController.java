@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mcqgroupbe.entity.User;
+import com.example.mcqgroupbe.entity.UserContactDetails;
 import com.example.mcqgroupbe.service.SecurityUserDetailsService;
 
 @RestController
@@ -38,24 +39,33 @@ public class SecurityController {
 	   }
 	@PreAuthorize("hasAuthority('SU')")
 	@PostMapping("/createAdmin")
-	public String createAdmmin(@RequestBody User user) {
+	public UserContactDetails createAdmmin(@RequestBody User user) {
 		System.out.println("Hi");
 	    System.out.println(user.getUsername());  
 	    user.setPassword(passwordEncoder.encode(user.getPassword()));
 	    user.setRole("ADMIN");
-		userDetailsManager.createUser(user);
-		return "hi";
+		return userDetailsManager.createUser(user);
+		
+	   }
+	@PreAuthorize("hasAuthority('SU')")
+	@PostMapping("/editAdmin")
+	public UserContactDetails editAdmmin(@RequestBody User user) {
+		System.out.println("Hi");
+	    System.out.println(user.getUsername());  
+	    user.setPassword(passwordEncoder.encode(user.getPassword()));
+	    user.setRole("ADMIN");
+		return userDetailsManager.editUser(user);
+		
 	   }
 	
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAnyAuthority('ADMIN','SU')")
 	@PostMapping("/createUser")
-	public String createUser(@RequestBody User user) {
+	public UserContactDetails createUser(@RequestBody User user) {
 		System.out.println("Hi");
 	    System.out.println(user.getUsername());  
 	    user.setPassword(passwordEncoder.encode(user.getPassword()));
 	    user.setRole("USER");
-		userDetailsManager.createUser(user);
-		return "hi";
+		return userDetailsManager.createUser(user);
 	   }
 	
 	@CrossOrigin(origins="http://localhost:4200/")
