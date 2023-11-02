@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.example.mcqgroupbe.entity.Question;
 
 import jakarta.persistence.EntityManager;
