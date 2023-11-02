@@ -28,6 +28,20 @@ public class QuestionNonCrudRepository implements IQuestionRepository{
 		return list;
 		return null;
 	}
+
+	@Override
+	public List<Question> getQuestionbyTopicId(int topicId) {
+		// TODO Auto-generated method stub
+		Session currSession =entityManager.unwrap(Session.class);
+		Query <Question> query = currSession.createQuery("from Question where topicId =:topicId ",Question.class)
+				.setParameter("topicId", topicId);
+		
+		List<Question> list = query.getResultList();
+		if(list.size()>0)
+		return list;
+		return null;
+	
+	}
 	
 
 }

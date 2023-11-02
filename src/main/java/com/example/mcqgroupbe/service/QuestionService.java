@@ -18,4 +18,10 @@ public class QuestionService implements IQuestionService {
 	public List<Question> getQuestionbyTopicAndSetId(int topicId, int setId) {
 		return questionRepository.getQuestionbyTopicAndSetId(topicId, setId);
 	}
+
+	@Override
+	public List<Question> getQuestionbyTopicId(int topicId) {
+		// TODO Auto-generated method stub
+		return questionRepository.getQuestionbyTopicId(topicId);
+	}
 }

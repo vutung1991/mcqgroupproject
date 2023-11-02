@@ -24,7 +24,7 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    @GetMapping("/questions")
+    @GetMapping("/getall")
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
@@ -35,12 +35,12 @@ public class QuestionController {
     }
     
     @PreAuthorize("hasAuthority('ADMIN')")
-    @PostMapping
+    @PostMapping("/add")    
     public Question createQuestion(@RequestBody Question question) {
         return questionRepository.save(question);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Question updateQuestion(@PathVariable int id, @RequestBody Question updatedQuestion) {
         Question existingQuestion = questionRepository.findById(id).orElse(null);
         if (existingQuestion != null) {
@@ -61,8 +61,14 @@ public class QuestionController {
     public List<Question> getBySetIdAndTopicID(@RequestBody TopicAndSetIds topicAndSetIds){
     	return questionService.getQuestionbyTopicAndSetId(topicAndSetIds.getTopicId(),topicAndSetIds.getSetId());
     }
+    
+    @GetMapping("/byTopicId/{topicId}")
+    public List<Question> getByTopicID(@PathVariable int topicId){
+    	return questionService.getQuestionbyTopicId(topicId);
+    }
+    
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteQuestion(@PathVariable int id) {
         questionRepository.deleteById(id);
     }
