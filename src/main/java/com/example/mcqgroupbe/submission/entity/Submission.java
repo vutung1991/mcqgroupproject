@@ -2,6 +2,8 @@ package com.example.mcqgroupbe.submission.entity;
 
 import java.util.List;
 
+import com.example.mcqgroupbe.entity.Answer;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,8 +14,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Submission2")
-public class Submission2 {
+@Table(name="Submission")
+public class Submission {
 	@Id
 	@GeneratedValue(strategy=GenerationType	.IDENTITY)
 	@Column(name="submissionId")
@@ -26,14 +28,14 @@ public class Submission2 {
 	@Column(name="scores")
 	private long score;
 	@OneToMany(mappedBy = "submission", cascade = CascadeType.ALL)
-    private List<Answer2> answers;
+    private List<Answer> answers;
 	
-	public Submission2() {
+	public Submission() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Submission2(long id, long userId, int setId, long score) {
+	public Submission(long id, long userId, int setId, long score) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -81,7 +83,7 @@ public class Submission2 {
 	
 	public void setScore() {
 	    int correctAnswers = 0;
-	    for (Answer2 answer : this.answers) {
+	    for (Answer answer : this.answers) {
 	        if (answer.isCorrect()) {
 	            correctAnswers++;
 	        }
@@ -89,7 +91,7 @@ public class Submission2 {
 	    this.score = correctAnswers;
 	}
     
-    public List<Answer2> getAnswers() {
+    public List<Answer> getAnswers() {
         return this.answers;
     }
 	
