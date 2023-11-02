@@ -22,11 +22,11 @@ import com.example.mcqgroupbe.service.SubmissionService;
 @RestController
 @RequestMapping("/submissions")
 @CrossOrigin(origins="http://localhost:4200/")
-public class SubmissionController {
+public class SubmissionController2 {
 
 	  private final SubmissionService submissionService;
 	@Autowired
-    public SubmissionController(SubmissionService submissionService) {
+    public SubmissionController2(SubmissionService submissionService) {
         this.submissionService = submissionService;
     }
 
