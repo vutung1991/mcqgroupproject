@@ -6,7 +6,7 @@ import com.example.mcqgroupbe.entity.Submission;
 
 import java.util.List;
 
-public interface SubmissionRepository extends JpaRepository<Submission, Integer> {
+public interface SubmissionRepository2 extends JpaRepository<Submission, Integer> {
     
 	List<Submission> findAllByUserId(int userId);
 }

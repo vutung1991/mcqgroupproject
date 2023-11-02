@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mcqgroupbe.entity.Answer;
-import com.example.mcqgroupbe.repository.AnswerRepository;
+import com.example.mcqgroupbe.repository.AnswerRepository2;
 
 @RestController
 @RequestMapping("/answers")
-public class AnswerController {
+public class AnswerController2 {
 
-	private final AnswerRepository answerRepository;
+	private final AnswerRepository2 answerRepository;
 
 	@Autowired
-	public AnswerController(AnswerRepository answerRepository) {
+	public AnswerController2(AnswerRepository2 answerRepository) {
 		this.answerRepository = answerRepository;
 
 	}

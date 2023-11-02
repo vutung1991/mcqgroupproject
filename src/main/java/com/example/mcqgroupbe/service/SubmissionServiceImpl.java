@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.mcqgroupbe.entity.Submission;
-import com.example.mcqgroupbe.repository.SubmissionRepository;
+import com.example.mcqgroupbe.repository.SubmissionRepository2;
 
 @Service
 public class SubmissionServiceImpl implements SubmissionService {
 
-    private final SubmissionRepository submissionRepository;
+    private final SubmissionRepository2 submissionRepository;
 
     @Autowired
-    public SubmissionServiceImpl(SubmissionRepository submissionRepository) {
+    public SubmissionServiceImpl(SubmissionRepository2 submissionRepository) {
         this.submissionRepository = submissionRepository;
     }
 
