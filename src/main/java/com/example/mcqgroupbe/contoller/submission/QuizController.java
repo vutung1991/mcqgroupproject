@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.mcqgroupbe.service.submission.QuizService;
 import com.example.mcqgroupbe.service.submission.SubmissionService;
 import com.example.mcqgroupbe.submission.entity.Quiz;
-import com.example.mcqgroupbe.submission.entity.Submission2;
+import com.example.mcqgroupbe.submission.entity.Submission;
 
 @RestController
 @RequestMapping("/api/quizzes")
@@ -37,7 +37,7 @@ public class QuizController {
     }
 
     @PostMapping("/submit")
-    public Submission2 submitQuiz(@RequestBody Submission2 submission) {
+    public Submission submitQuiz(@RequestBody Submission submission) {
         return submissionService.submitQuiz(submission);
     }
     

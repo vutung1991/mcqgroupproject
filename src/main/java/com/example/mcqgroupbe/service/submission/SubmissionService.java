@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.mcqgroupbe.entity.Answer;
 import com.example.mcqgroupbe.repository.submission.SubmissionRepository;
-import com.example.mcqgroupbe.submission.entity.Answer2;
-import com.example.mcqgroupbe.submission.entity.Submission2;
+import com.example.mcqgroupbe.submission.entity.Submission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ public class SubmissionService {
     @Autowired
     private EmailService emailService;
 
-    public Submission2 createSubmission(Submission2 submission) {
+    public Submission createSubmission(Submission submission) {
         if (submission.getId() == null) {
             long newSubmissionId = generateDynamicSubmissionId(submission.getUserId());
             submission.setId(newSubmissionId);
@@ -33,7 +34,7 @@ public class SubmissionService {
     }
 
 
-    public Submission2 getSubmissionByUserIdAndSetId(Long userId, int setId) {
+    public Submission getSubmissionByUserIdAndSetId(Long userId, int setId) {
         return submissionRepository.findByUserIdAndSetId(userId, setId);
     }
 
@@ -42,13 +43,13 @@ public class SubmissionService {
         return userId * 1000000 + timestamp;
     }
     
-    public void calculateAndSetScore(Submission2 submission) {
-        List<Answer2> answers = submission.getAnswers();
+    public void calculateAndSetScore(Submission submission) {
+        List<Answer> answers = submission.getAnswers();
 
         if (answers != null) {
             int correctAnswers = 0;
 
-            for (Answer2 answer : answers) {
+            for (Answer answer : answers) {
                 if (answer.isCorrect()) {
                     correctAnswers++;
                 }
@@ -70,7 +71,7 @@ public class SubmissionService {
 
         emailService.sendSimpleEmail(adminEmail, subject, message);
     }
-    public Submission2 submitQuiz(Submission2 submission) {
+    public Submission submitQuiz(Submission submission) {
         
         if (submission.getId() == null) {
             long newSubmissionId = generateDynamicSubmissionId(submission.getUserId());

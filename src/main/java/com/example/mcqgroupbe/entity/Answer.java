@@ -1,10 +1,13 @@
 package com.example.mcqgroupbe.entity;
 
+import com.example.mcqgroupbe.submission.entity.Submission;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +30,8 @@ public class Answer {
 
 	@Column(name = "correct")
 	private boolean correct;
+    @ManyToOne
+    private Submission submission;
 
 	// Constructors, getters, and setters as needed
 
@@ -83,4 +88,19 @@ public class Answer {
 		this.correct = correct;
 		
 	}
+	
+	public Submission getSubmission() {
+		return submission;
+	}
+
+	public void setSubmission(Submission submission) {
+		this.submission = submission;
+	}
+	
+	@Override
+	public String toString() {
+		return "Answer [answerId=" + answerId + ", questionId=" + questionId + ", answer=" + answerSelection + ", correct="
+				+ correct + ", submission=" + submission + "]";
+	}
+	
 }

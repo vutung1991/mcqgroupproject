@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.mcqgroupbe.entity.Submission;
 import com.example.mcqgroupbe.service.SubmissionService;
+import com.example.mcqgroupbe.submission.entity.Submission;
 
 @RestController
 @RequestMapping("/submissions")

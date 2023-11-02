@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mcqgroupbe.entity.Answer;
 import com.example.mcqgroupbe.service.submission.AnswerService;
 import com.example.mcqgroupbe.service.submission.SubmissionService;
-import com.example.mcqgroupbe.submission.entity.Answer2;
-import com.example.mcqgroupbe.submission.entity.Submission2;
+import com.example.mcqgroupbe.submission.entity.Submission;
 
 @RestController
 @RequestMapping("/api/answers")
@@ -24,9 +24,9 @@ public class AnswerController {
     private SubmissionService submissionService;
 
     @PostMapping("/save")
-    public Answer2 saveAnswer(@RequestBody Answer2 answer) {
+    public Answer saveAnswer(@RequestBody Answer answer) {
         
-        Submission2 submission = submissionService.getSubmissionByUserIdAndSetId(answer.getSubmission().getUserId(), answer.getSubmission().getSetId());
+        Submission submission = submissionService.getSubmissionByUserIdAndSetId(answer.getSubmission().getUserId(), answer.getSubmission().getSetId());
 
         
         answer.setSubmission(submission);

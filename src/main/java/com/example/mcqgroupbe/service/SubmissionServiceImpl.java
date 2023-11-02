@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mcqgroupbe.entity.Submission;
 import com.example.mcqgroupbe.repository.SubmissionRepository2;
+import com.example.mcqgroupbe.submission.entity.Submission;
 
 @Service
 public class SubmissionServiceImpl implements SubmissionService {
@@ -38,7 +38,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     public void updateSubmission(int submissionId, Submission submission) {
         // Ensure the submission with the given ID exists before updating
         if (submissionRepository.existsById(submissionId)) {
-            submission.setSubmissionId(submissionId);
+            submission.setId(submissionId);
             submissionRepository.save(submission);
         }
         // Handle the case when the submission with the given ID doesn't exist

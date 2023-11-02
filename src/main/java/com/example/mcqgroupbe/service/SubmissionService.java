@@ -3,7 +3,8 @@ package com.example.mcqgroupbe.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.mcqgroupbe.entity.Submission;
+import com.example.mcqgroupbe.submission.entity.Submission;
+
 
 public interface SubmissionService {
 
